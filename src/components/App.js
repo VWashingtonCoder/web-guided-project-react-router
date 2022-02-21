@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // 👉 STEP 2 - React Router imports (Route, Link and Switch)
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 
 // Components used for the different routes
 import Home from './Home'
@@ -34,12 +34,23 @@ export default function App(props) {
       </nav>
 
       {/* 👉 STEP 4 - Build a Switch with a Route for each of the components imported at the top */}
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/items-list">
-        <ItemsList items={stock} />
-      </Route>
+      <Switch>
+        <Route path={"/items-list/:itemID"}>
+          <Item items={stock} />
+        </Route>
+        <Route path="/items-list">
+          <ItemsList items={stock} />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
     </div>
   )
 }
+
+/**
+ *  <Route path="/items-list" render={(props) => {
+        return <ItemsList items={stock} match={props.match} />
+      }} />
+ */
