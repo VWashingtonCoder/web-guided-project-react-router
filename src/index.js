@@ -8,9 +8,18 @@ import App from './components/App'
 import './styles.less'
 
 // 👉 STEP 1 - Import React Router's Router
+import { BrowserRouter as Router } from 'react-router-dom';
 
 render(
   // Wrap the <App /> in a provider
-  <App />
+  <Router>
+    <App />
+  </Router>
   , document.querySelector('#root')
 )
+
+/**
+ * match    -> everything about the url
+ * location -> everything about where you are
+ * history  -> everything about where you were (or will be...)
+ */
